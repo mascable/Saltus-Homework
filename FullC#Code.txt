@@ -1,0 +1,163 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Saltus_Homework
+{
+    //object with two variables, one to hold the index of the list and one to hold the colors. This made it easier to 
+    //assign the colors to the indexes and sort the list later on.
+    public class Color
+    {
+        public int index;
+        public string col;
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            /*
+            I originally filled an array with the random ints but I was struggling to assign the colors to the index of the array. 
+            So, I eventually changed it to a list which is why the list has "..Array" in the name.
+            I know I could have simply replaced all the instances of the name but, I wanted to leave it in so you could better see my thought process.
+            */
+
+            //Filling an array with random ints from 1-100
+            Random rnd = new Random();
+            List<Color> RndIntArray = new List<Color>();
+          
+            for (int i = 0; i < 100; i++)
+            {
+                RndIntArray.Add(new Color());
+
+                RndIntArray[i].index = rnd.Next(1, 101);
+                
+                //Assigning the colors to the array --- using the remainder to assign it to the correct index in the list.
+                if (i % 3 == 0)
+                {
+                    RndIntArray[i].col = "Red";
+                }
+
+                if (i % 3 == 1)
+                {
+                    RndIntArray[i].col = "Yellow";
+
+                }
+
+                if (i % 3 == 2)
+                {
+                    RndIntArray[i].col = "White";
+
+                }
+                
+            }
+
+            //Removing the required items from the list 
+            for (int i = 0; i < RndIntArray.Count; i++)
+            {
+                //Don't want the removal to fail if the 0th index is removed. So, setting i = to 0 if it becomes negative. 
+                if(i < 0)
+                {
+                    i = 0;
+                }
+
+                //Removing all of the even numbers that are red
+                if (RndIntArray[i].index % 2 == 0 && RndIntArray[i].col == "Red")
+                {
+                    RndIntArray.RemoveAt(i);
+                    i--;
+                }
+
+                //Removing all of the odd numbers that are yellow
+                else if (RndIntArray[i].index % 2 == 1 && RndIntArray[i].col == "Yellow")
+                {
+                    RndIntArray.RemoveAt(i);
+                    i--;
+                }
+
+                //Removing all of the numbers divisible by 3 that are white
+                else if (RndIntArray[i].index % 3 == 0 && RndIntArray[i].col == "White")
+                {
+                    RndIntArray.RemoveAt(i);
+                    i--;
+                }
+
+            }        
+
+
+            //this while loop sorts the numbers ascending
+            bool flag = true;
+            while(flag)
+            {
+                flag = false;
+                for (int i = 1; i < RndIntArray.Count; i++ )
+                {
+                    if (RndIntArray[i].index < RndIntArray[i-1].index)
+                    {
+                        Color temp = RndIntArray[i - 1];
+                        RndIntArray[i - 1] = RndIntArray[i];
+                        RndIntArray[i] = temp;
+                        flag = true;
+                    }
+                }
+            }
+
+
+            //this while loop compares duplicate numbers and then compares red and white, and yellow and white.
+            //We know that Red and Yellow cannot be attached to the same number based on the requirements of the list removals. 
+            flag = true;
+            while (flag)
+            {
+                flag = false;
+                for (int i = 1; i < RndIntArray.Count; i++)
+                {
+                    if (RndIntArray[i].index == RndIntArray[i - 1].index)
+                    {
+                        if (RndIntArray[i].col == "Red" &&  RndIntArray[i-1].col == "White")
+                        {
+                            Color temp = RndIntArray[i - 1];
+                            RndIntArray[i - 1] = RndIntArray[i];
+                            RndIntArray[i] = temp;
+                            flag = true;
+                        }
+
+                        else if (RndIntArray[i].col == "Yellow" && RndIntArray[i - 1].col == "White")
+                        {
+                            Color temp = RndIntArray[i - 1];
+                            RndIntArray[i - 1] = RndIntArray[i];
+                            RndIntArray[i] = temp;
+                            flag = true;
+                        }
+
+                    }
+                }
+            }
+
+            //Giving a little user interaction before displaying the result of the list
+            Console.WriteLine("Press any key to display the list by numbers ascending and by color (Red < Yellow < White): ");
+            Console.ReadKey();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            //This is the foreach loop to actual display the results to the console
+            foreach (Color SortedNum in RndIntArray)
+            {
+                Console.WriteLine(SortedNum.index + " " + SortedNum.col);
+            }
+
+            //Just to show that if you press a key, the console will close.
+            Console.WriteLine();
+            Console.WriteLine("Press any key to quit: ");
+
+
+            Console.ReadKey();
+
+            //Thanks for the opportunity to interview and complete the code assessment! I enjoyed getting to learn more about Saltus and hope 
+            //to be seeing you all in the future!
+            
+        }
+    }
+}
