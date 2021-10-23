@@ -1,0 +1,7 @@
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\bin\Debug\Saltus Homework.exe.config
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\bin\Debug\Saltus Homework.exe
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\bin\Debug\Saltus Homework.pdb
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\obj\Debug\Saltus Homework.csprojAssemblyReference.cache
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\obj\Debug\Saltus Homework.csproj.CoreCompileInputs.cache
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\obj\Debug\Saltus Homework.exe
+C:\Users\mason\Documents\Visual Studio 2017\Projects\Saltus Homework\Saltus Homework\obj\Debug\Saltus Homework.pdb
